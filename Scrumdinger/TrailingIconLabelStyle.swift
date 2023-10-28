@@ -1,18 +1,16 @@
-//
-//  TrailingIconLabelStyle.swift
-//  Scrumdinger
-//
-//  Created by Hidaka Yoshiki on 2023/10/28.
-//
-
 import SwiftUI
 
-struct TrailingIconLabelStyle: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct TrailingIconLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            configuration.title
+            configuration.icon
+        }
     }
 }
 
-#Preview {
-    TrailingIconLabelStyle()
+extension LabelStyle where Self == TrailingIconLabelStyle {
+    static var trailingIcon: Self { Self() }
 }
+
+

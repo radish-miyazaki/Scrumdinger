@@ -28,7 +28,8 @@ actor SpeechRecoginizer: ObservableObject {
     private var recognizer: SFSpeechRecognizer?
     
     init() {
-        recognizer = SFSpeechRecognizer()
+        // INFO: 日本語を認識するように設定
+        recognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja_JP"))
         guard recognizer != nil else {
             transcribe(RecognizerError.nilRecognizer)
             return

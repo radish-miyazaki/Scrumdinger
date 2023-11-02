@@ -28,6 +28,12 @@ actor SpeechRecoginizer: ObservableObject {
     private var recognizer: SFSpeechRecognizer?
     
     init() {
+        recognizer = SFSpeechRecognizer()
+        guard recognizer != nil else {
+            transcribe(RecognizerError.nilRecognizer)
+            return
+        }
+        
         Task {
             do {
                 guard await SFSpeechRecognizer.hasAuthorizationRecognize() else {
